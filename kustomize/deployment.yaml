@@ -1,0 +1,33 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    app: pet
+  name: pet
+  namespace: pet
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: pet
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: pet
+    spec:
+      containers:
+      - image: nginx:1.25.3-alpine-slim
+        name: nginx
+        ports:
+        - containerPort: 80
+        resources:
+          limits:
+            cpu: 100m
+            memory: 100Mi
+          requests:
+            cpu: 10m
+            memory: 10Mi
+status: {}
